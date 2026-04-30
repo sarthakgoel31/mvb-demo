@@ -88,7 +88,8 @@ export default function Home() {
   }, [demoIndex]);
 
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    // Scroll only within the chat container, not the page
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }, [demoIndex]);
 
   async function handleSubmit(e: React.FormEvent) {
