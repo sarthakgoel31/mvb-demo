@@ -258,10 +258,10 @@ export default function Home() {
           ) : !showForm ? (
             <>
               <h2 className="mb-3 text-2xl font-bold">Apne myBillBook data se sawaal poochho</h2>
-              <p className="mb-6 text-muted">Early access ke liye apna number dein. Hum aapko jaldi se jaldi access denge.</p>
+              <p className="mb-6 text-muted">Pay <span className="line-through text-zinc-400">&#8377;499</span> <span className="text-white font-bold">&#8377;399/month</span> for early access</p>
               <button onClick={() => setShowForm(true)}
                 className="w-full rounded-xl bg-accent py-3.5 text-[15px] font-semibold text-white transition-all hover:bg-accent-light">
-                I want early access
+                Get Early Access — <span className="line-through opacity-60">&#8377;499</span> &#8377;399/mo
               </button>
             </>
           ) : (
