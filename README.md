@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# myVoiceBooksAI
 
-## Getting Started
+Voice-first analytics for Indian SMBs — speak in Hindi, get instant business answers with auto-generated charts.
 
-First, run the development server:
+**Live demo:** [mvb.sarthakgoel.cv](https://mvb.sarthakgoel.cv)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Why
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+50M invoices in myBillBook, zero self-serve analytics. Shop owners manage inventory while serving customers — they can't type on a phone while packing orders. Built a voice app where users speak in Hindi ("aaj kitni sales hui?") and get instant answers backed by real Snowflake data.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. User opens the app, authenticates via OTP (phone number verified against myBillBook)
+2. Dashboard loads instantly (300ms) with KPI cards — Sales Today, Revenue, Receivables, Top Product
+3. User holds mic button, speaks in Hindi or English
+4. Speech-to-text converts voice to text, LLM translates to SQL, Snowflake returns data
+5. Answer displayed with auto-generated charts (bar, line, pie, table) + read aloud via ElevenLabs TTS
+6. Follow-up questions work in context ("inme se kitne paid the?")
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
+| Feature | Description |
+|---|---|
+| Voice-First | Hold mic, speak in Hindi or English. Answer in 2-3 seconds |
+| 300ms Dashboard | KPI cards load via direct SQL — zero LLM cost for standard views |
+| Auto Charts | Bar, line, pie, table charts generated automatically from data |
+| Follow-ups | Multi-turn conversations with context preservation |
+| OTP Auth | Phone number verified against myBillBook user database |
+| Hindi + English | Regional language support via LLM translation |
+| ElevenLabs TTS | Answers read aloud — hands-free operation |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Component | Technology |
+|---|---|
+| Frontend | React + Vite, TypeScript, Recharts |
+| Voice | Web Speech API (STT) + ElevenLabs (TTS) |
+| Backend | Express.js, flo-analytics-llm SDK |
+| Data | Snowflake data warehouse |
+| Auth | OTP via myBillBook API |
+| Deploy | Render (demo), Vercel (case study) |
 
-## Deploy on Vercel
+## Case Study
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Full case study with architecture decisions, screenshots, and technical deep-dive:
+[mvb.sarthakgoel.cv](https://mvb.sarthakgoel.cv)
