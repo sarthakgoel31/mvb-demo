@@ -77,7 +77,7 @@ export default function Home() {
   const [formData, setFormData] = useState({ name: "", phone: "", company: "" });
   const [submitted, setSubmitted] = useState(false);
   const [micActive, setMicActive] = useState(false);
-  const chatEndRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
   // Auto-play demo conversation
   useEffect(() => {
@@ -88,8 +88,8 @@ export default function Home() {
   }, [demoIndex]);
 
   useEffect(() => {
-    // Scroll only within the chat container, not the page
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    const container = chatContainerRef.current;
+    if (container) container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
   }, [demoIndex]);
 
   async function handleSubmit(e: React.FormEvent) {
@@ -163,7 +163,7 @@ export default function Home() {
               </div>
 
               {/* Chat messages */}
-              <div className="h-[360px] overflow-y-auto p-4 space-y-3">
+              <div ref={chatContainerRef} className="h-[360px] overflow-y-auto p-4 space-y-3">
                 <AnimatePresence>
                   {demoConversation.slice(0, demoIndex).map((msg, i) => (
                     <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
@@ -193,7 +193,7 @@ export default function Home() {
                     </div>
                   </div>
                 )}
-                <div ref={chatEndRef} />
+                <div />
               </div>
 
               {/* Mic button */}
