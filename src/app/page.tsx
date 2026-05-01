@@ -287,7 +287,7 @@ export default function Home() {
               </div>
               <button type="submit" disabled={formData.phone.length < 10}
                 className="w-full rounded-xl bg-accent py-3.5 text-[15px] font-semibold text-white transition-all hover:bg-accent-light disabled:opacity-40 disabled:cursor-not-allowed">
-                Request Early Access
+                Get Early Access — <span className="line-through opacity-60">&#8377;499</span> &#8377;399/mo
               </button>
               <p className="text-center text-xs text-zinc-600">No spam. Sirf early access notification.</p>
             </form>
